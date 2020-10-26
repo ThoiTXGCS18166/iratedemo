@@ -1,0 +1,92 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-size: 13px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+h1 {
+    text-align:center;
+}
+
+#frm-add-description textarea {
+    height: auto !important;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+}
+
+@media screen and (prefers-color-scheme: dark) {
+}
+.rated
+{
+    font-size: 55px;
+}
+.rater
+{
+    font-size: 55px;
+    font-family: sans-serif;
+}
+.ratedDetail
+{
+    font-size: 55px;
+    font-family: sans-serif; 
+}
+.rate-base-layer
+{
+    color: #aaa;
+}
+.rate-hover-layer
+{
+    color: orange;
+}
+.rate-select-layer
+{
+    color: orange;
+}
+
+#map {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+#viewlatlngmap {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+#viewnewlatlngmap {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+@media all and (max-width: 560px) {
+    #map {
+        height: calc(100vh - 200px);
+    }
+
+    #viewlatlngmap {
+        height: calc(100vh - 200px);
+    }
+
+    #viewnewlatlngmap {
+        height: calc(100vh - 200px);
+    }
+}
+
+.ui-content1{
+    background-image: url('../img/homeimage.png');
+    background-size:100% 100%;
+    height: 100vh;
+    width: 100%;
+}
