@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        
+        <link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="css/index.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
+        <link type="text/css" rel="stylesheet" href="jssocials-1.4.0/dist/jssocials.css"/>
+        <link type="text/css" rel="stylesheet" href="jssocials-1.4.0/dist/jssocials-theme-classic.css"/>
+        <script src="jqm/jquery.js"></script>
+        <script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/rater.js" charset="utf-8"></script>
+        <script src="cordova.js"></script>
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&libraries=&v=weekly">
+        </script>
+        <script src="js/index.js"></script>
+        <script src="jssocials-1.4.0/dist/jssocials.min.js"></script>
+
+
+        <title></title>
+    </head>
+    <body>
+        
+        <!--The login page-->
+        <div data-role="page" id="loginpage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <img src="img/logo1.PNG" style="width: 120px;height: 120px; margin: 10px auto 20px; display: block;">
+            </div>
+
+            <div data-role="main" style="background-color:#fff8cd;">
+                <form id="frm-login">
+                    <h1>The Login Form For i-Rate</h1>
+                    <p><strong>Login Username/Email</strong></p>
+                    <input type="email" id="txt-username" placeholder="Login Username/Email" data-mini="true" data-clear-btn="true" required>
+                    <p><strong>Login Password</strong></p>
+                    <input type="password" id="txt-password" placeholder="Login Password" data-mini="true" data-clear-btn="true" required pattern="(?=^.{6,25}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                    <input type="submit" data-inline="true" value="Login as user">
+                    <a href="#signuppage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-right ui-icon-arrow-r" style="background-color: #32CD32;" data-transition="pop">Register new user account</a>
+                </form>
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+
+            </div>
+        </div>
+        
+        <!--The sign up page-->
+        <div data-role="page" id="signuppage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <img src="img/logo1.PNG" style="width: 120px;height: 120px; margin: 10px auto 20px; display: block;">
+            </div>
+
+            <div data-role="main" style="background-color:#fff8cd;">
+                <form id="frm-signup">
+                    <h1>The Sign-up Form For i-Rate</h1>
+                    <p><strong>Sign-up Username/Email</strong></p>
+                    <input type="email" id="txt-signupusername" placeholder="Sign-up Username/Email" data-mini="true" data-clear-btn="true" required>
+                    <p><strong>Sign-up Password</strong></p>
+                    <input type="password" id="txt-signuppassword" placeholder="Sign-up Password" data-mini="true" data-clear-btn="true" required pattern="(?=^.{6,25}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                    <input type="submit" data-inline="true" value="Submit information and login">
+                    <a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-arrow-l" style="background-color: #32CD32;" data-transition="pop">Back to the login page</a>
+                </form>
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+
+            </div>
+        </div>
+
+        <!--The homepage-->
+        <div data-role="page" id="homepage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <h1>Welcome to i-Rate</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content1">
+                
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#addpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-plus" style="background-color: #32CD32;" data-transition="pop">Add</a></li>
+                        <li><a href="#viewpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-grid" style="background-color: #32CD32;" data-transition="pop">View</a></li>
+                        <li><a href="#searchpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-search" style="background-color: #32CD32;" data-transition="pop">Search</a></li>
+                        <li><a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-back" style="background-color: #32CD32;" data-transition="pop">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!--The add page-->
+        <div data-role="page" id="addpage">
+            <div data-role="header" style="background-color:#d2e603;" data-position="fixed">
+                <h1>Adding Restaurant Rating List</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content" style="background-color:#fff8cd;">
+                <form id="frm-create-restaurant">
+                    <h1>Form for adding new restaurant rating</h1>
+                    <p><strong>Restaurant Name(Required)</strong></p>
+                    <input type="text" id="txt-restaurantname" data-clear-btn="true" data-mini="true" required placeholder="Restaurant name">
+                    <p><strong>Restaurant Type(Required)</strong></p>
+                    <select id="txt-restauranttype" name="select-choice-a" data-native-menu="false" data-mini="true" required>
+                            <option value="">Choose Restaurant Type</option>
+                            <option value="Grill">Grill</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Sea Food">Sea Food</option>
+                    </select>
+                    <p><strong>Date And Time Of The Visit(Required)</strong></p>
+                    <input type="date" id="txt-visittime" data-clear-btn="true" data-mini="true" required>
+                    <p><strong>Average Meal Price Per Person(Required)</strong></p>
+                    <input type="number" id="txt-mealprice" data-mini="true" data-clear-btn="true" name="number" value="" required placeholder="Average meal price per person">
+                    <p><strong>Service Rating(Required)</strong></p>
+                    <div id="txt-servicerating" class="rater"></div>
+                    <p><strong>Cleanliness Rating(Required)</strong></p>
+                    <div id="txt-cleanlinessrating" class="rater"></div>
+                    <p><strong>Food Quality Rating(Required)</strong></p>
+                    <div id="txt-foodrating" class="rater"></div>
+                    <p><strong>Notes(Optional)</strong></p>
+                    <textarea id="txt-note" cols="40" rows="8" placeholder="Notes"></textarea>
+                    <p><strong>Reporter Name(Required)</strong></p>
+                    <input type="text" id="txt-reportername" data-clear-btn="true" data-mini="true" required placeholder="Reporter name">
+                    <p><strong>The Address Of The Restaurant(Optional)</strong></p>
+                    <input type="text" id="txt-address" data-clear-btn="true" data-mini="true" placeholder="Restaurant address">
+                    <p><strong>The Latitude Of The Restaurant(Optional)</strong></p>
+                    <input type="text" id="txt-latitude" data-clear-btn="true" data-mini="true" placeholder="Restaurant latitude">
+                    <p><strong>The Longitude Of The Restaurant(Optional)</strong></p>
+                    <input type="text" id="txt-longitude" data-clear-btn="true" data-mini="true" placeholder="Restaurant longtitude">
+                    
+                    <input type="button" value="Show the input location by address" id="btn-resaddressLocation" data-mini="true">
+                    <input type="button" value="Show the input location by latitude and longtitude" id="btn-reslatlngLocation" data-mini="true">
+                    <input type="button" value="Show current location on Google Maps" id="btn-curLocation" data-mini="true">
+                    <div id="viewlatlngmap"></div>
+                    <p><strong>The Restaurant Related Picture(Optional)</strong></p>
+                    <input type="button" value="Take restaurant related picture" id="btn-take-picture">
+                    <img id="image" src="" height="300px" style="text-align: center;" data-inline="true"/>
+                    <input type="submit" data-inline="true" value="Add new restaurant rating">
+                </form>
+
+                <div id="share"></div>
+
+                <script>
+                    $("#share").jsSocials({
+                        url: "http://js-socials.com",
+                        text: "A new restaurant rating has been added in the i-Rate app database",
+                        showLabel: true,
+                        shares: ["twitter", "facebook"]
+                    });
+                </script>
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-home" style="background-color: #32CD32;" data-transition="pop">Home</a></li>
+                        <li><a href="#viewpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-grid" style="background-color: #32CD32;" data-transition="pop">View</a></li>
+                        <li><a href="#searchpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-search" style="background-color: #32CD32;" data-transition="pop">Search</a></li>
+                        <li><a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-back" style="background-color: #32CD32;" data-transition="pop">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--The view page-->
+        <div data-role="page" id="viewpage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <h1>View Restaurant Rating List</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content" style="background-color:#fff8cd;">
+                <p style="text-align: center; font-size: large;">The Current Restaurant Rating List</p>
+                <form id="frm-delete-restaurant">
+                    <p><strong>The Deleted Restaurant Name(Required)</strong></p>
+                    <input type="text" id="txt-searchname" data-clear-btn="true" data-mini="true" required placeholder="The searched restaurant name for delete">
+                    <input type="submit" data-inline="true" value="Delete the searched restaurant rating">
+                    <!--
+                        <input type="submit" data-inline="true" value="Delete all current restaurant ratings">
+                    -->
+                    
+
+                </form>
+
+                <input type="search" name="" id="searchname" placeholder="The searched restaurant name">
+                <p style="text-align: center; font-size: large;">The Current Restaurant Ratings</p>
+                <ul data-role="listview" id="lv-restaurant-list"></ul>
+
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-home" style="background-color: #32CD32;" data-transition="pop">Home</a></li>
+                        <li><a href="#addpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-plus" style="background-color: #32CD32;" data-transition="pop">Add</a></li>
+                        <li><a href="#searchpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-search" style="background-color: #32CD32;" data-transition="pop">Search</a></li>
+                        <li><a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-back" style="background-color: #32CD32;" data-transition="pop">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--The detail viewing page-->
+        <div data-role="page" id="viewdetailpage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <h1>The Specific Restaurant Rating Details</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content" style="background-color:#fff8cd;">
+                <div id="restaurantinfo"></div>
+
+                <p style="text-align: left;"><strong>The Speciffic Location Of The Restaurant On Google Map</strong></p>
+                <div id="map" style="height: 400px; width: 100%;"></div>
+
+                <h2 style="float: left;">Restaurant Descriptions</h2>
+                <div align ="right" id="btn-add-descriptions"></div>
+                <div data-role="popup" id="frm-add-description" class="ui-corner-all">
+                    <form>
+                        <div style="padding: 25px;">
+                            <h3>Please enter the restaurant descriptions:</h3>
+                            <div style="display: none;">
+                                <input type="text" id="txt-Id" readonly>
+                            </div>
+                            <textarea id="ta-description" cols="50" rows="5"></textarea>
+
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a"><input type="submit" value="Add restaurant's descriptions"></div>
+                                <div class="ui-block-b">
+                                    <a href="#" id="btn-clear" data-rel="back" class="ui-btn">Clear</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div style="clear: both;"><hr></div>
+
+                <em><div id="description"></div></em>
+
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-right ui-icon-delete" style="background-color: #32CD32;" data-transition="pop" id="btn-deleterestaurant">Delete</a></li>
+                        <li><a href="#updatepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-right ui-icon-edit" style="background-color: #32CD32;" data-transition="pop">Update</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-home" style="background-color: #32CD32;" data-transition="pop">Home</a></li>
+                        <li><a href="#addpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-plus" style="background-color: #32CD32;" data-transition="pop">Add</a></li>
+                        <li><a href="#viewpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-grid" style="background-color: #32CD32;" data-transition="pop">View</a></li>
+                        <li><a href="#searchpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-search" style="background-color: #32CD32;" data-transition="pop">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--The search page-->
+        <div data-role="page" id="searchpage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <h1>Searching Restaurant Ratings</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content" style="background-color:#fff8cd;">
+                <form id="frm-search-restaurant">
+                    <p><strong>The Searched Restaurant Type(Required)</strong></p>
+                    <select id="txt-searchtype" name="select-choice-a" data-native-menu="false" data-mini="true" required>
+                            <option value="">Choose Restaurant Type</option>
+                            <option value="Grill">Grill</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Sea Food">Sea Food</option>
+                    </select>
+                    <input type="submit" data-inline="true" value="Search for the selected restaurant">
+                </form>
+
+                <p style="text-align: center; font-size: large;">The Searched Restaurant</p>
+                <ul data-role="listview" id="lv-search-list"></ul>
+
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-home" style="background-color: #32CD32;" data-transition="pop">Home</a></li>
+                        <li><a href="#addpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-plus" style="background-color: #32CD32;" data-transition="pop">Add</a></li>
+                        <li><a href="#viewpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-grid" style="background-color: #32CD32;" data-transition="pop">View</a></li>
+                        <li><a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-back" style="background-color: #32CD32;" data-transition="pop">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--The updating page-->
+        <div data-role="page" id="updatepage">
+            <div data-role="header" style="background-color: #d2e603;" data-position="fixed">
+                <h1>Updating the current restaurant ratings</h1>
+                <a href="#left-panel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+
+            <div data-role="main" class="ui-content" style="background-color:#fff8cd;">
+                <form id="frm-update-restaurant">
+                    <h1>The Form For Updating The Current Restaurant Ratings</h1>
+                    <p><strong>The Updated Restaurant Name(Required)</strong></p>
+                    <input type="text" id="txt-updaterestaurantname" data-clear-btn="true" data-mini="true" required placeholder="Updated restaurant name">
+                    <p><strong>The Updated Restaurant Type(Required)</strong></p>
+                    <select id="txt-updaterestauranttype" name="select-choice-a" data-native-menu="false" data-mini="true" required>
+                            <option value="">Choose Restaurant Type</option>
+                            <option value="Grill">Grill</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Sea Food">Sea Food</option>
+                    </select>
+                    <p><strong>The Updated Date And Time Of The Visit(Required)</strong></p>
+                    <input type="date" id="txt-updatevisittime" data-clear-btn="true" data-mini="true" required>
+                    <p><strong>The Updated Average Meal Price Per Person(Required)</strong></p>
+                    <input type="number" id="txt-updatemealprice" data-mini="true" data-clear-btn="true" name="number" value="" required placeholder="Updated average meal price per person">
+                    <p><strong>The Updated Service Rating(Required)</strong></p>
+                    <div id="txt-updateservicerating" class="rater"></div>
+                    <p><strong>The Updated Cleanliness Rating(Required)</strong></p>
+                    <div id="txt-updatecleanlinessrating" class="rater"></div>
+                    <p><strong>The Updated Food Quality Rating(Required)</strong></p>
+                    <div id="txt-updatefoodrating" class="rater"></div>
+                    <p><strong>The Updated Notes(Optional)</strong></p>
+                    <textarea id="txt-updatenote" cols="40" rows="8" placeholder="Updated notes"></textarea>
+                    <p><strong>The Updated Reporter Name(Required)</strong></p>
+                    <input type="text" id="txt-updatereportername" data-clear-btn="true" data-mini="true" required placeholder="Updated reporter name">
+                    <p><strong>The Updated Restaurant Address(Optional)</strong></p>
+                    <input type="text" id="txt-updaterestaurantaddress" data-clear-btn="true" data-mini="true" placeholder="Updated restaurant address">
+                    <p><strong>The Updated Restaurant Latitude(Optional)</strong></p>
+                    <input type="text" id="txt-updaterestaurantlatitude" data-clear-btn="true" data-mini="true" placeholder="Updated restaurant latitude">
+                    <p><strong>The Updated Restaurant Longitude(Optional)</strong></p>
+                    <input type="text" id="txt-updaterestaurantlongitude" data-clear-btn="true" data-mini="true" placeholder="Updated restaurant longtitude">
+                    
+                    <input type="button" value="Show the new input location by address" id="btn-newresaddressLocation" data-mini="true">
+                    <input type="button" value="Show the new input location by latitude and longtitude" id="btn-newreslatlngLocation" data-mini="true">
+                    <input type="button" value="Show current location on Google Maps" id="btn-newcurLocation" data-mini="true">
+                    <div id="viewnewlatlngmap"></div>
+                    <p><strong>The Updated Restaurant Related Picture(Optional)</strong></p>
+                    <input type="button" value="Re-take restaurant related picture" id="btn-retake-picture">
+                    <img id="updateimage" src="" height="300px" style="text-align: center;" data-inline="true">
+                    <input type="submit" data-inline="true" value="Update the needed restaurant rating">
+                </form>
+            </div>
+
+            <div data-role="footer" style="background-color:#32CD32;" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-home" style="background-color: #32CD32;" data-transition="pop">Home</a></li>
+                        <li><a href="#addpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-plus" style="background-color: #32CD32;" data-transition="pop">Add</a></li>
+                        <li><a href="#viewpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-grid" style="background-color: #32CD32;" data-transition="pop">View</a></li>
+                        <li><a href="#searchpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-search" style="background-color: #32CD32;" data-transition="pop">Search</a></li>
+                        <li><a href="#loginpage" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-top ui-icon-back" style="background-color: #32CD32;" data-transition="pop">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="panel" data-position-fixed="true" data-display="push" data-theme="b" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close Menu</a></li>
+                    <li data-icon="home"><a href="#homepage">Home Page</a></li>
+                    <li data-icon="plus"><a href="#addpage">Add Page</a></li>
+                    <li data-icon="grid"><a href="#viewpage">View Page</a></li>
+                    <li data-icon="search"><a href="#searchpage">Search Page</a></li>
+                    <li data-icon="back"><a href="#loginpage">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </body>
+</html>
